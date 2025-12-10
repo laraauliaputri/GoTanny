@@ -1,0 +1,188 @@
+.header {
+  background: var(--background-card);
+  padding: 0.875rem 2rem;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.headerContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: var(--primary-green);
+  letter-spacing: -0.02em;
+  transition: var(--transition-normal);
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo img {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoText span:first-child {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.logoText span:last-child {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.navMenu {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  list-style: none;
+}
+
+.navMenu a {
+  padding: 0.625rem 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+  position: relative;
+}
+
+.navMenu a::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 20px;
+  height: 2px;
+  background: var(--primary-green-light);
+  border-radius: 2px;
+  transition: transform var(--transition-normal);
+}
+
+.navMenu a:hover {
+  color: var(--primary-green);
+  background: rgba(93, 122, 61, 0.08);
+}
+
+.navMenu a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navMenu a.active {
+  color: var(--primary-green);
+  background: rgba(93, 122, 61, 0.1);
+}
+
+.navMenu a.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.mobileMenuBtn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-light);
+  border-radius: var(--radius-md);
+  color: var(--primary-green);
+}
+
+.scanButton {
+  background: linear-gradient(135deg, var(--primary-green-light) 0%, var(--primary-green) 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 16px rgba(93, 122, 61, 0.3);
+}
+
+.scanButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(93, 122, 61, 0.4);
+}
+
+.scanButton:active {
+  transform: translateY(0);
+}
+
+.scanButton i {
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .navMenu {
+    display: none;
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0.625rem 1rem;
+  }
+
+  .logo img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .logoText span:first-child {
+    font-size: 1.125rem;
+  }
+
+  .scanButton {
+    padding: 0.625rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .scanButton span {
+    display: none;
+  }
+}

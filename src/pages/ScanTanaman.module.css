@@ -1,0 +1,453 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  flex: 1;
+}
+
+.scanSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Scan Header */
+.scanHeader {
+  text-align: center;
+}
+
+.scanHeader h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-green);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.scanHeader p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Scan Container */
+.scanContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Upload Area */
+.uploadArea {
+  background: var(--background-card);
+  border: 2px dashed var(--border-medium);
+  border-radius: var(--radius-xl);
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  overflow: hidden;
+}
+
+.uploadArea:hover {
+  border-color: var(--primary-green-light);
+  background: rgba(93, 122, 61, 0.03);
+}
+
+.uploadArea.hasImage {
+  cursor: default;
+  border-style: solid;
+  border-color: var(--primary-green-light);
+}
+
+.uploadPlaceholder {
+  text-align: center;
+  padding: 2rem;
+}
+
+.uploadIcon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-green-light), var(--primary-green));
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+}
+
+.uploadPlaceholder h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.uploadPlaceholder p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.supportedFormats {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--background-light);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+}
+
+/* Preview */
+.previewWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.previewImage {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+  background: #f5f5f5;
+}
+
+.scanningOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.scanLine {
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+  animation: scan 2s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0%, 100% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(150px);
+    opacity: 1;
+  }
+}
+
+.scanningOverlay p {
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.scanButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-green-light), var(--primary-green));
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition-normal);
+  box-shadow: 0 4px 16px rgba(93, 122, 61, 0.3);
+}
+
+.scanButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(93, 122, 61, 0.4);
+}
+
+.scanButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.resetButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--background-card);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-light);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition-normal);
+}
+
+.resetButton:hover {
+  border-color: var(--primary-green-light);
+  color: var(--primary-green);
+}
+
+/* Result Card */
+.resultCard {
+  background: var(--background-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+  color: white;
+}
+
+.resultIcon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.resultHeader h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.resultHeader p {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.resultContent {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.resultItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.resultItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.confidenceBar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  max-width: 200px;
+}
+
+.confidenceBar > div:first-child {
+  flex: 1;
+  height: 8px;
+  background: var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.confidenceFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-green-light), var(--accent-green));
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.confidenceBar span {
+  font-weight: 700;
+  color: var(--primary-green);
+  min-width: 45px;
+  text-align: right;
+}
+
+.severity {
+  padding: 0.375rem 0.875rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.severity.ringan {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.severity.sedang {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.severity.berat {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.resultActions {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--background-light);
+}
+
+.detailButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-green-light), var(--primary-green));
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition-normal);
+}
+
+.detailButton:hover {
+  transform: translateY(-2px);
+}
+
+.newScanButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--background-card);
+  color: var(--text-secondary);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition-normal);
+}
+
+.newScanButton:hover {
+  border-color: var(--primary-green-light);
+  color: var(--primary-green);
+}
+
+/* Instructions */
+.instructions {
+  background: var(--background-card);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.instructions h3 {
+  font-size: 1rem;
+  color: var(--primary-green);
+  margin-bottom: 1rem;
+}
+
+.instructions ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  list-style: none;
+}
+
+.instructions li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.instructions li i {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(93, 122, 61, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--primary-green-light);
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .mainContent {
+    padding: 1rem;
+  }
+
+  .scanHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .uploadArea {
+    min-height: 280px;
+  }
+
+  .previewImage {
+    height: 280px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .resultActions {
+    flex-direction: column;
+  }
+
+  .instructions ul {
+    grid-template-columns: 1fr;
+  }
+}
